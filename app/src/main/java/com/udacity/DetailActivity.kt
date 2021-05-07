@@ -1,5 +1,6 @@
 package com.udacity
 
+import android.app.NotificationManager
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,9 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         setSupportActionBar(toolbar)
+
+        val notificationManager = getSystemService(NotificationManager::class.java)
+        notificationManager.cancel(NOTIFICATION_ID)
 
         val fileName = intent.getStringExtra(DOWNLOAD_URL_KEY).toString()
         val status = intent.getStringExtra(DOWNLOAD_STATUS_KEY).toString()
@@ -33,8 +37,8 @@ class DetailActivity : AppCompatActivity() {
         }
 
         okButton.setOnClickListener {
-            val int = Intent(applicationContext, MainActivity::class.java)
-            startActivity(int)
+            // This closes out the activity and pops it off the stack
+            finish()
         }
     }
 

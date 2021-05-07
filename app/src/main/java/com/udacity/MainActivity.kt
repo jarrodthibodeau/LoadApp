@@ -31,13 +31,13 @@ enum class DownloadUrl(val value: String) {
 
 const val DOWNLOAD_URL_KEY = "DOWNLOAD_URL_KEY"
 const val DOWNLOAD_STATUS_KEY = "DOWNLOAD_STATUS_KEY"
+const val NOTIFICATION_ID = 0
 
 class MainActivity : AppCompatActivity() {
 
     private val contentTitle = "Udacity: Android Kotlin Nanodegree"
     private val contentText = "The Project 3 repository is downloaded"
     private val channelDescription = "For when a download is complete"
-    private val notificationId = 0
 
     private var downloadID: Long = 0
     private var downloadUrl: String = ""
@@ -143,7 +143,7 @@ class MainActivity : AppCompatActivity() {
 
         pendingIntent = PendingIntent.getActivity(
             applicationContext,
-            notificationId,
+            NOTIFICATION_ID,
             intent,
             PendingIntent.FLAG_UPDATE_CURRENT
         )
@@ -162,13 +162,14 @@ class MainActivity : AppCompatActivity() {
             .setContentTitle(contentTitle)
             .setContentText(contentText)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .addAction(action)
             .setAutoCancel(true)
             .setChannelId(CHANNEL_ID)
-            .addAction(action)
+
 
         notificationManager =
             getSystemService(NotificationManager::class.java)
-        notificationManager.notify(notificationId, builder.build())
+        notificationManager.notify(NOTIFICATION_ID, builder.build())
     }
 
     /**

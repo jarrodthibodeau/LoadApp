@@ -45,9 +45,14 @@ class LoadingButton @JvmOverloads constructor(
         }
     }
 
-
     init {
         isClickable = true
+
+        context.withStyledAttributes(attrs, R.styleable.LoadingButton) {
+            rectColor = getColor(R.styleable.LoadingButton_loadingButtonColor, 0)
+            textColor = getColor(R.styleable.LoadingButton_loadingTextColor, 0)
+            label = getString(R.styleable.LoadingButton_loadingText).toString()
+        }
 
         rectColor = getColor(context, R.color.colorPrimary)
         animRectColor = getColor(context, R.color.colorPrimaryDark)

@@ -65,7 +65,9 @@
         android:layout_height="60dp"
         android:layout_margin="20dp"
         android:layout_marginBottom="24dp"
-        android:text="@string/button_loading"
+        app:loadingText="@string/button_download"
+        app:loadingTextColor="@color/white"
+        app:loadingButtonColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
