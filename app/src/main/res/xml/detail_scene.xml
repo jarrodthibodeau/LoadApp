@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        android:id="@+id/success_transition"
+        app:constraintSetStart="@+id/startSuccess"
+        app:constraintSetEnd="@+id/endSuccess"
+        app:duration="1000"
+        app:autoTransition="animateToEnd"
+        >
+        <KeyFrameSet>
+            <KeyAttribute
+                android:color="#000000"
+                app:framePosition="0"
+                app:motionTarget="@+id/statusValue">
+                <CustomAttribute
+                    app:attributeName="textColor"
+                    app:customColorValue="#000000" />
+            </KeyAttribute>
+            <KeyAttribute
+                app:framePosition="100"
+                app:motionTarget="@+id/statusValue"
+                >
+                <CustomAttribute
+                    app:attributeName="textColor"
+                    app:customColorValue="#00FF00" />
+            </KeyAttribute>
+        </KeyFrameSet>
+    </Transition>
+
+    <Transition
+        android:id="@+id/failed_transition"
+        app:constraintSetStart="@+id/startFailed"
+        app:constraintSetEnd="@+id/endFailed"
+        app:autoTransition="animateToEnd"
+        app:duration="1000"
+        >
+        <KeyFrameSet>
+            <KeyAttribute
+                android:color="#000000"
+                app:framePosition="0"
+                app:motionTarget="@+id/statusValue">
+                <CustomAttribute
+                    app:attributeName="textColor"
+                    app:customColorValue="#000000" />
+            </KeyAttribute>
+            <KeyAttribute
+                app:framePosition="100"
+                app:motionTarget="@+id/statusValue"
+                >
+                <CustomAttribute
+                    app:attributeName="textColor"
+                    app:customColorValue="#FF0000" />
+            </KeyAttribute>
+        </KeyFrameSet>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/startSuccess" />
+    <ConstraintSet android:id="@+id/endSuccess" />
+
+    <ConstraintSet android:id="@+id/startFailed" />
+    <ConstraintSet android:id="@+id/endFailed" />
+</MotionScene>
